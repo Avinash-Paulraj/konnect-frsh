@@ -65,7 +65,7 @@ export default function PostItem({ post, fetchPosts }) {
         <button
           className="btn btn-sm btn-outline-primary"
           onClick={handleShowComments}
-          disabled={commentsLoading}
+          disabled={commentsLoading || showComments}
         >
           {commentsLoading ? 'Loading...' : 'Comments'}
         </button>

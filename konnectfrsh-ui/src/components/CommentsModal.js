@@ -85,8 +85,14 @@ export default function CommentsModal({ post, onClose, comments }) {
       {error && <div style={{ color: 'red' }}>{error}</div>}
       {!loading && Array.isArray(commentsState) && commentsState.length === 0 && <div>No comments yet.</div>}
       {!loading && Array.isArray(commentsState) && commentsState.map((c) => (
-        <div key={c.id}>
-          <span>{c.comment}</span>
+        <div key={c.id} style={{ marginBottom: '8px' }}>
+          <div>
+            <span style={{ fontWeight: 'bold' }}>{c.username}:</span>
+            <span style={{ marginLeft: '8px' }}>{c.comment}</span>
+          </div>
+          <div style={{ fontSize: '0.85em', color: '#555' }}>
+            {c.commented_date ? new Date(c.commented_date).toLocaleString() : ''}
+          </div>
           {(c.user_id === user.id || post.user_id === user.id) && (
             <button onClick={() => handleDeleteComment(c.id)}>Delete</button>
           )}
