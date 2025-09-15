@@ -36,6 +36,9 @@ export default function PostsList() {
         {posts.map((post) => (
           <div className="col-md-6 col-lg-4" key={post.id}>
             <PostItem post={post} fetchPosts={fetchPosts} />
+            <div style={{ fontSize: '0.9em', color: '#888', marginTop: '4px', marginBottom: '8px' }}>
+              Posted by {post.username || 'Unknown'} on {post.created_at ? new Date(post.created_at).toLocaleString() : ''}
+            </div>
           </div>
         ))}
       </div>

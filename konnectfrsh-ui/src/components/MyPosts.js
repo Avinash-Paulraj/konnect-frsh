@@ -99,6 +99,9 @@ export default function MyPosts() {
       {posts.map((post) => (
         <div key={post.id} style={{ border: "1px solid black", margin: 10, padding: 10 }}>
           <p>{post.blog_text}</p>
+          <div style={{ fontSize: '0.9em', color: '#888', marginTop: '4px', marginBottom: '8px' }}>
+            Posted by {post.username || 'Unknown'} on {post.created_at ? new Date(post.created_at).toLocaleString() : ''}
+          </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <button
               onClick={() => handleLike(post)}

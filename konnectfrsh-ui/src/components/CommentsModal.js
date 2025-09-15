@@ -87,13 +87,13 @@ export default function CommentsModal({ post, onClose, comments }) {
       {!loading && Array.isArray(commentsState) && commentsState.map((c) => (
         <div key={c.id} style={{ marginBottom: '8px' }}>
           <div>
-            <span style={{ fontWeight: 'bold' }}>{c.username}:</span>
+            <span style={{ fontWeight: 'bold' }}>{c.commented_by}:</span>
             <span style={{ marginLeft: '8px' }}>{c.comment}</span>
           </div>
           <div style={{ fontSize: '0.85em', color: '#555' }}>
             {c.commented_date ? new Date(c.commented_date).toLocaleString() : ''}
           </div>
-          {(c.user_id === user.id || post.user_id === user.id) && (
+          {(c.commented_by_current_user || c.post_belongs_to_current_user) && (
             <button onClick={() => handleDeleteComment(c.id)}>Delete</button>
           )}
         </div>
